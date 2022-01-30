@@ -9,10 +9,28 @@ import SwiftUI
 
 struct ContentView: View {
     @State var signInSuccess = false
-
+    @State var showingProfile = false
+    @State var showingHome = false
+    @State var showingHome2 = false
+    @State var showingRec = false
     var body: some View {
-        if signInSuccess {
-            HomeView()
+        if showingHome2 {
+            HomeView(showingProfile: $showingProfile,showingRec: $showingRec)
+        }
+        else if showingProfile {
+            ProfileView(showingHome2: $showingHome2)
+        }
+        else if showingHome2 {
+            HomeView(showingProfile: $showingProfile,showingRec: $showingRec)
+        }
+        else if showingHome {
+            HomeView(showingProfile: $showingProfile,showingRec: $showingRec)
+        }
+        else if showingRec {
+            RecView(showingHome: $showingHome)
+        }
+        else if signInSuccess {
+            HomeView(showingProfile: $showingProfile,showingRec: $showingRec)
         }
         else {
             LoginFormView(signInSuccess: $signInSuccess)
@@ -52,6 +70,8 @@ struct LoginFormView: View {
     }
 }
 struct HomeView: View {
+    @Binding var showingProfile: Bool
+    @Binding var showingRec: Bool
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(stops: [.init(color: Color(#colorLiteral(red: 0.5411764979362488, green: 0.7921568751335144, blue: 1, alpha: 1)), location: 0.0989583358168602),.init(color: Color(#colorLiteral(red: 0.7960784435272217, green: 0.800000011920929, blue: 1, alpha: 1)), location: 0.3958333432674408),.init(color: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),location: 0.9739583134651184)]),startPoint: UnitPoint(x: 0.5, y: -3.0616171314629196e-17),endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)).edgesIgnoringSafeArea(.all)
@@ -83,7 +103,19 @@ struct HomeView: View {
                     HStack(spacing:15){
                         
                         ZStack(alignment:.top) {
+                    
+                            
                             Image("Group 39").padding(.leading,40)
+                            Button(action: {
+                                if showingRec {
+                                    showingRec = false
+                                }
+                                else {
+                                    showingRec = true
+                                }
+                            }) {
+                                Image("Group 39").padding(.leading,40).opacity(0)
+                            }
                             HStack(alignment:.top){
                                 VStack {
                                     Text("S").font(.system(size:17,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 40, leading: 80, bottom: 1, trailing: 0))
@@ -101,9 +133,37 @@ struct HomeView: View {
                         
                     }
                 }
-                HStack {
-                    Button("Button") {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                HStack(spacing:30) {
+                    Button(action: {
+                        print("hi")
+    //                    if showingProfile {
+    //                        showingProfile = false
+    //                    }
+    //                    else {
+    //                        showingProfile = true
+    //                    }
+                    }) {
+                        Image("notebook 1 (1)").padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    }
+                    Button(action: {
+    //                    if showingProfile {
+    //                        showingProfile = false
+    //                    }
+    //                    else {
+    //                        showingProfile = true
+    //                    }
+                    }) {
+                        Image("Daco_1839350 1").padding(EdgeInsets(top: 10, leading: 0, bottom: -25, trailing: 0))
+                    }
+                    Button(action: {
+                        if showingProfile {
+                            showingProfile = false
+                        }
+                        else {
+                            showingProfile = true
+                        }
+                    }) {
+                        Image("Group 19 (1)").padding(EdgeInsets(top: 10, leading: 5, bottom: 0, trailing: 0))
                     }
                 }
                 
@@ -114,15 +174,41 @@ struct HomeView: View {
     }
 }
 struct RecView:View {
+    @Binding var showingHome: Bool
     var body: some View {
-        Text("Hello")
+        ZStack(alignment:.top) {
+            LinearGradient(gradient: Gradient(stops: [.init(color: Color(#colorLiteral(red: 0.5411764979362488, green: 0.7921568751335144, blue: 1, alpha: 1)), location: 0.0989583358168602),.init(color: Color(#colorLiteral(red: 0.7960784435272217, green: 0.800000011920929, blue: 1, alpha: 1)), location: 0.3958333432674408),.init(color: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),location: 0.9739583134651184)]),startPoint: UnitPoint(x: 0.5, y: -3.0616171314629196e-17),endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)).edgesIgnoringSafeArea(.all)
+            Image("Group 41-1").padding(.top,30)
+            Button(action: {
+                if showingHome {
+                    showingHome = false
+                }
+                else {
+                    showingHome = true
+                }
+            }){
+                Image("icons8-left-48").frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 25, leading: 25, bottom: 0, trailing: 0))
+            }
+            
+        }
     }
 }
 
 struct ProfileView: View {
+    @Binding var showingHome2: Bool
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             LinearGradient(gradient: Gradient(stops: [.init(color: Color(#colorLiteral(red: 0.5411764979362488, green: 0.7921568751335144, blue: 1, alpha: 1)), location: 0.0989583358168602),.init(color: Color(#colorLiteral(red: 0.7960784435272217, green: 0.800000011920929, blue: 1, alpha: 1)), location: 0.3958333432674408),.init(color: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),location: 0.9739583134651184)]),startPoint: UnitPoint(x: 0.5, y: -3.0616171314629196e-17),endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)).edgesIgnoringSafeArea(.all)
+            Button(action: {
+                if showingHome2 {
+                    showingHome2 = false
+                }
+                else {
+                    showingHome2 = true
+                }
+            }){
+                Image("icons8-left-48").frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 25, leading: 25, bottom: 0, trailing: 0))
+            }
             VStack() {
                 
                 Text("Profile").font(.system(size:25,weight:.semibold)).frame(maxWidth:.infinity,alignment:.top).padding(EdgeInsets(top: 150, leading: 0, bottom: 0, trailing: 0))
@@ -173,8 +259,6 @@ struct ProfileView: View {
                     }
                     
                 }
-
-                
                 Spacer()
             }
          
@@ -184,7 +268,7 @@ struct ProfileView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        ContentView()
 .previewInterfaceOrientation(.portrait)
     }
 }
