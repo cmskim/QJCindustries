@@ -102,7 +102,7 @@ struct HomeView: View {
     @Binding var recommendation:Recommendation
     @Binding var showingProfile: Bool
     @Binding var showingRec: Bool
-
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(stops: [.init(color: Color(#colorLiteral(red: 0.5411764979362488, green: 0.7921568751335144, blue: 1, alpha: 1)), location: 0.0989583358168602),.init(color: Color(#colorLiteral(red: 0.7960784435272217, green: 0.800000011920929, blue: 1, alpha: 1)), location: 0.3958333432674408),.init(color: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),location: 0.9739583134651184)]),startPoint: UnitPoint(x: 0.5, y: -3.0616171314629196e-17),endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)).edgesIgnoringSafeArea(.all)
@@ -136,7 +136,7 @@ struct HomeView: View {
                         ZStack(alignment:.top) {
                     
                             
-                            Image("Group 39").padding(.leading,40)
+                            Image("Group 31 (4)").padding(.leading,40)
                             Button(action: {
                                 if showingRec {
                                     showingRec = false
@@ -145,23 +145,22 @@ struct HomeView: View {
                                     showingRec = true
                                 }
                             }) {
-                                Image("Group 39").padding(.leading,40).opacity(0)
-                            }
-                            HStack(alignment:.top){
-                                VStack {
-                                    
-
-                                    Text("\(recommendation.destination?.city ?? "NIL") (\(recommendation.destination?.code ?? "NIL"))").font(.system(size:17,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 40, leading: 80, bottom: 1, trailing: 0))
-                                    Text("From \(recommendation.origin?.city ?? "NIL") (\(recommendation.origin?.code ?? "NIL"))").font(.system(size:12,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 0))
-                                }
-                                ZStack {
-                                    Image("Group 40").frame(maxWidth:.infinity,alignment:.trailing).padding(EdgeInsets(top: 50, leading: 80, bottom: 0, trailing: 10))
-                                    Text("$\(recommendation.price ?? 0.0)").font(.system(size:16,weight:.bold)).foregroundColor(Color(#colorLiteral(red: 0.12, green: 0.56, blue: 1, alpha: 1))).padding(EdgeInsets(top: 35, leading: 77, bottom: 0, trailing: 10))
-                                }
-                                
-                                Spacer()
+                                Image("Group 31 (4)").padding(.leading,40).opacity(0)
                             }
                         }
+//                            HStack(alignment:.top){
+//                                VStack {
+//
+//                                    Text("\(recommendation.destination?.city ?? "NIL") (\(recommendation.destination?.code ?? "NIL"))").font(.system(size:17,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 40, leading: 80, bottom: 1, trailing: 0))
+//                                    Text("From \(recommendation.origin?.city ?? "NIL") (\(recommendation.origin?.code ?? "NIL"))").font(.system(size:12,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 0))
+//                                }
+//                                ZStack {
+//                                    Image("Group 40").frame(maxWidth:.infinity,alignment:.trailing).padding(EdgeInsets(top: 50, leading: 80, bottom: 0, trailing: 10))
+//                                    Text("$\(recommendation.price ?? 0.0)").font(.system(size:16,weight:.bold)).foregroundColor(Color(#colorLiteral(red: 0.12, green: 0.56, blue: 1, alpha: 1))).padding(EdgeInsets(top: 35, leading: 77, bottom: 0, trailing: 10))
+//                                }
+//
+//                                Spacer()
+//                            }
                         Image("Group 44 (1)")
                         Image("Group 46")
                         Image("Group 3133")
@@ -216,17 +215,23 @@ struct RecView:View {
         ZStack(alignment:.top) {
             LinearGradient(gradient: Gradient(stops: [.init(color: Color(#colorLiteral(red: 0.5411764979362488, green: 0.7921568751335144, blue: 1, alpha: 1)), location: 0.0989583358168602),.init(color: Color(#colorLiteral(red: 0.7960784435272217, green: 0.800000011920929, blue: 1, alpha: 1)), location: 0.3958333432674408),.init(color: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),location: 0.9739583134651184)]),startPoint: UnitPoint(x: 0.5, y: -3.0616171314629196e-17),endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)).edgesIgnoringSafeArea(.all)
             Image("Group 41-1").padding(.top,30)
-            Button(action: {
-                if showingHome {
-                    showingHome = false
+            VStack{
+                Button(action: {
+                    if showingHome {
+                        showingHome = false
+                    }
+                    else {
+                        showingHome = true
+                    }
+                }){
+                    Image("icons8-left-48").frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 25, leading: 25, bottom: 0, trailing: 0))
                 }
-                else {
-                    showingHome = true
+                Link(destination: URL(string: "https://www.google.com/docs/about/")!) {
+                    Image("Group 47").padding(EdgeInsets(top: 730, leading: 220, bottom: 0, trailing: 0))
                 }
-            }){
-                Image("icons8-left-48").frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 25, leading: 25, bottom: 0, trailing: 0))
+
             }
-            
+                        
         }
     }
 }
