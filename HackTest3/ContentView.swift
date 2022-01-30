@@ -9,31 +9,32 @@ import SwiftUI
 
 struct ContentView: View {
     @State var signInSuccess = false
+    @State var recommendation = Recommendation()
     @State var showingProfile = false
     @State var showingHome = false
     @State var showingHome2 = false
     @State var showingRec = false
     var body: some View {
         if showingHome2 {
-            HomeView(showingProfile: $showingProfile,showingRec: $showingRec)
+            HomeView(recommendation: $recommendation, showingProfile: $showingProfile,showingRec: $showingRec)
         }
         else if showingProfile {
             ProfileView(showingHome2: $showingHome2)
         }
         else if showingHome2 {
-            HomeView(showingProfile: $showingProfile,showingRec: $showingRec)
+            HomeView(recommendation: $recommendation, showingProfile: $showingProfile,showingRec: $showingRec)
         }
         else if showingHome {
-            HomeView(showingProfile: $showingProfile,showingRec: $showingRec)
+            HomeView(recommendation: $recommendation, showingProfile: $showingProfile,showingRec: $showingRec)
         }
         else if showingRec {
             RecView(showingHome: $showingHome)
         }
         else if signInSuccess {
-            HomeView(showingProfile: $showingProfile,showingRec: $showingRec)
+            HomeView(recommendation: $recommendation, showingProfile: $showingProfile,showingRec: $showingRec)
         }
         else {
-            LoginFormView(signInSuccess: $signInSuccess)
+            LoginFormView(signInSuccess: $signInSuccess,recommendation: $recommendation)
         }
         
     }
@@ -43,6 +44,32 @@ struct LoginFormView: View {
     @Binding var signInSuccess: Bool
     @State var user: String = ""
     @State var pass: String = ""
+    
+    @Binding var recommendation:Recommendation
+    func get_rec() {
+        let url = URL(string: "https://qjc-nodeserver.herokuapp.com/user/recommendation")
+
+        let session = URLSession.shared
+        let task = session.dataTask(with: url!) {(data, response, error) in
+            if error == nil && data != nil {
+                // parse JSON
+                let decoder = JSONDecoder()
+                do {
+                    let rec = try decoder.decode(Recommendation.self, from: data!)
+                    recommendation.price = rec.price
+                    recommendation.origin = rec.origin
+                    recommendation.destination = rec.destination
+                    recommendation.date = rec.date
+                    print("done")
+                }
+                catch {
+                    print("error in parsing Recommendation JSON")
+                }
+            }
+        }
+        
+        task.resume()
+    }
     
     var body: some View {
         ZStack {
@@ -57,6 +84,7 @@ struct LoginFormView: View {
                 SecureField("Password", text: $pass).padding(.leading,65)
                 Divider().padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 65))
                 Button(action: {
+                    get_rec()
                     signInSuccess = true
                 }) {
                     Image("Signup")
@@ -70,8 +98,11 @@ struct LoginFormView: View {
     }
 }
 struct HomeView: View {
+    @State var test = "Hello"
+    @Binding var recommendation:Recommendation
     @Binding var showingProfile: Bool
     @Binding var showingRec: Bool
+
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(stops: [.init(color: Color(#colorLiteral(red: 0.5411764979362488, green: 0.7921568751335144, blue: 1, alpha: 1)), location: 0.0989583358168602),.init(color: Color(#colorLiteral(red: 0.7960784435272217, green: 0.800000011920929, blue: 1, alpha: 1)), location: 0.3958333432674408),.init(color: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),location: 0.9739583134651184)]),startPoint: UnitPoint(x: 0.5, y: -3.0616171314629196e-17),endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)).edgesIgnoringSafeArea(.all)
@@ -118,12 +149,14 @@ struct HomeView: View {
                             }
                             HStack(alignment:.top){
                                 VStack {
-                                    Text("New York City (JFK)").font(.system(size:17,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 40, leading: 80, bottom: 1, trailing: -20))
-                                    Text("From Houston (IAH)").font(.system(size:12,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 0))
+                                    
+
+                                    Text("\(recommendation.destination?.city ?? "NIL") (\(recommendation.destination?.code ?? "NIL"))").font(.system(size:17,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 40, leading: 80, bottom: 1, trailing: 0))
+                                    Text("From \(recommendation.origin?.city ?? "NIL") (\(recommendation.origin?.code ?? "NIL"))").font(.system(size:12,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 0))
                                 }
                                 ZStack {
                                     Image("Group 40").frame(maxWidth:.infinity,alignment:.trailing).padding(EdgeInsets(top: 50, leading: 80, bottom: 0, trailing: 10))
-                                    Text("$146").font(.system(size:16,weight:.bold)).foregroundColor(Color(#colorLiteral(red: 0.12, green: 0.56, blue: 1, alpha: 1))).padding(EdgeInsets(top: 35, leading: 77, bottom: 0, trailing: 10))
+                                    Text("$\(recommendation.price ?? 0.0)").font(.system(size:16,weight:.bold)).foregroundColor(Color(#colorLiteral(red: 0.12, green: 0.56, blue: 1, alpha: 1))).padding(EdgeInsets(top: 35, leading: 77, bottom: 0, trailing: 10))
                                 }
                                 
                                 Spacer()
