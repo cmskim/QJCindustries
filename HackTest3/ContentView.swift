@@ -81,6 +81,7 @@ struct HomeView: View {
                 Text("Recommendations").font(.system(size:25,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 25, leading: 40, bottom: 0, trailing: 0))
                 ScrollView(.horizontal,showsIndicators: false) {
                     HStack(spacing:15){
+                        
                         ZStack(alignment:.top) {
                             Image("Group 39").padding(.leading,40)
                             HStack(alignment:.top){
@@ -93,11 +94,9 @@ struct HomeView: View {
                                     Text("$146").font(.system(size:16,weight:.bold)).foregroundColor(Color(#colorLiteral(red: 0.12, green: 0.56, blue: 1, alpha: 1))).padding(EdgeInsets(top: 35, leading: 77, bottom: 0, trailing: 10))
                                 }
                                 
-                                
                                 Spacer()
                             }
                         }
-                        
                         Image("Group 31 (1)")
                         
                     }
@@ -112,6 +111,11 @@ struct HomeView: View {
             }
          
         }
+    }
+}
+struct RecView:View {
+    var body: some View {
+        Text("Hello")
     }
 }
 
