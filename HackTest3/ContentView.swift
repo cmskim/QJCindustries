@@ -115,6 +115,69 @@ struct HomeView: View {
     }
 }
 
+struct ProfileView: View {
+    var body: some View {
+        ZStack {
+            LinearGradient(gradient: Gradient(stops: [.init(color: Color(#colorLiteral(red: 0.5411764979362488, green: 0.7921568751335144, blue: 1, alpha: 1)), location: 0.0989583358168602),.init(color: Color(#colorLiteral(red: 0.7960784435272217, green: 0.800000011920929, blue: 1, alpha: 1)), location: 0.3958333432674408),.init(color: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),location: 0.9739583134651184)]),startPoint: UnitPoint(x: 0.5, y: -3.0616171314629196e-17),endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)).edgesIgnoringSafeArea(.all)
+            VStack() {
+                
+                Text("Profile").font(.system(size:25,weight:.semibold)).frame(maxWidth:.infinity,alignment:.top).padding(EdgeInsets(top: 150, leading: 0, bottom: 0, trailing: 0))
+                
+                ZStack(alignment:.top) {
+                    //Rectangle 18
+                    RoundedRectangle(cornerRadius: 27)
+                        .fill(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    .frame(width: 348, height: 403)
+                    
+                    VStack(alignment:.leading) {
+                        Image("Face").padding(EdgeInsets(top: 40, leading: 170, bottom: 0, trailing: 0))
+                            
+                        
+                        //Name
+                        Text("Name").frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5))).padding(EdgeInsets(top: 10, leading: 80, bottom: 0, trailing: 0))
+                        
+                        //Justin Smart
+                        Text("Justin Smart").font(.custom("Open Sans Regular", size: 15))
+                            .padding(EdgeInsets(top: 1, leading: 80, bottom: 0, trailing: 0))
+                        
+                        // Email
+                        Text("Email").frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5))).padding(EdgeInsets(top: 20, leading: 80, bottom: 0, trailing: 0))
+                        
+                        //guest@gmail.com
+                        Text("guest@gmail.com").font(.custom("Open Sans Regular", size: 15))
+                            .padding(EdgeInsets(top: 1, leading: 80, bottom: 0, trailing: 0))
+                        
+                        HStack {
+                            VStack {
+                                // Past Trips
+                                Text("Past Trips").frame(maxWidth:200,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5))).padding(EdgeInsets(top: 20, leading: 80, bottom: 0, trailing: 0))
+                                
+                                //guest@gmail.com
+                                Text("5").font(.custom("Open Sans Regular", size: 15))
+                                    .padding(EdgeInsets(top: 1, leading: 20, bottom: 0, trailing: 0))
+                            }
+                            
+                            VStack {
+                                // Past Trips
+                                Text("Planned Trips").frame(maxWidth:200,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5))).padding(EdgeInsets(top: 20, leading: 40, bottom: 0, trailing: 0))
+                                
+                                //guest@gmail.com
+                                Text("1").font(.custom("Open Sans Regular", size: 15))
+                                    .padding(EdgeInsets(top: 1, leading: 0, bottom: 0, trailing: 45))
+                            }
+                        }
+                    }
+                    
+                }
+
+                
+                Spacer()
+            }
+         
+        }
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
