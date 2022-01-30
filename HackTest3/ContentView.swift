@@ -94,8 +94,8 @@ struct HomeView: View {
                         Image("Group 29").padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
                         Image("Group 22").padding(.top,2)
                         Image("Group 23 (2)").padding(.top,2)
-                        Image("Group 24").padding(.top,2)
-                        Image("Group 25").padding(.top,2)
+                        Image("Group 42").padding(.top,2)
+                        Image("Group 43").padding(.top,2)
                     }
                 }
                 Text("Recommendations").font(.system(size:25,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 25, leading: 40, bottom: 0, trailing: 0))
@@ -118,8 +118,8 @@ struct HomeView: View {
                             }
                             HStack(alignment:.top){
                                 VStack {
-                                    Text("S").font(.system(size:17,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 40, leading: 80, bottom: 1, trailing: 0))
-                                    Text("a").font(.system(size:12,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 0))
+                                    Text("New York City (JFK)").font(.system(size:17,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 40, leading: 80, bottom: 1, trailing: -20))
+                                    Text("From Houston (IAH)").font(.system(size:12,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 0))
                                 }
                                 ZStack {
                                     Image("Group 40").frame(maxWidth:.infinity,alignment:.trailing).padding(EdgeInsets(top: 50, leading: 80, bottom: 0, trailing: 10))
@@ -129,7 +129,11 @@ struct HomeView: View {
                                 Spacer()
                             }
                         }
-                        Image("Group 31 (1)")
+                        Image("Group 44 (1)")
+                        Image("Group 46")
+                        Image("Group 3133")
+                        
+                        
                         
                     }
                 }
