@@ -36,7 +36,7 @@ struct LoginFormView: View {
                 TextField("Email address", text: $user).padding(.leading,65)
                 Divider().padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 65))
                 Text("Password").font(.system(size:15,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 45, leading: 65, bottom: 0, trailing: 0))
-                TextField("Password", text: $pass).padding(.leading,65)
+                SecureField("Password", text: $pass).padding(.leading,65)
                 Divider().padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 65))
                 Button(action: {
                     signInSuccess = true
@@ -81,7 +81,23 @@ struct HomeView: View {
                 Text("Recommendations").font(.system(size:25,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 25, leading: 40, bottom: 0, trailing: 0))
                 ScrollView(.horizontal,showsIndicators: false) {
                     HStack(spacing:15){
-                        Image("Group 31 (1)").padding(.leading,40)
+                        ZStack(alignment:.top) {
+                            Image("Group 39").padding(.leading,40)
+                            HStack(alignment:.top){
+                                VStack {
+                                    Text("S").font(.system(size:17,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 40, leading: 80, bottom: 1, trailing: 0))
+                                    Text("a").font(.system(size:12,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 0))
+                                }
+                                ZStack {
+                                    Image("Group 40").frame(maxWidth:.infinity,alignment:.trailing).padding(EdgeInsets(top: 50, leading: 80, bottom: 0, trailing: 10))
+                                    Text("$146").font(.system(size:16,weight:.bold)).foregroundColor(Color(#colorLiteral(red: 0.12, green: 0.56, blue: 1, alpha: 1))).padding(EdgeInsets(top: 35, leading: 77, bottom: 0, trailing: 10))
+                                }
+                                
+                                
+                                Spacer()
+                            }
+                        }
+                        
                         Image("Group 31 (1)")
                         
                     }
@@ -101,7 +117,7 @@ struct HomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
 .previewInterfaceOrientation(.portrait)
     }
 }
