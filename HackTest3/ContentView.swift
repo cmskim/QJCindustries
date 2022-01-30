@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var signInSuccess = false
-    
+
     var body: some View {
         if signInSuccess {
             HomeView()
@@ -23,12 +23,32 @@ struct ContentView: View {
 
 struct LoginFormView: View {
     @Binding var signInSuccess: Bool
+    @State var user: String = ""
+    @State var pass: String = ""
+    
     var body: some View {
-        Button(action: {
-            signInSuccess = true
-        }) {
-            Text("Sign in")
+        ZStack {
+            LinearGradient(gradient: Gradient(stops: [.init(color: Color(#colorLiteral(red: 0.5411764979362488, green: 0.7921568751335144, blue: 1, alpha: 1)), location: 0.0989583358168602),.init(color: Color(#colorLiteral(red: 0.7960784435272217, green: 0.800000011920929, blue: 1, alpha: 1)), location: 0.3958333432674408),.init(color: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),location: 0.9739583134651184)]),startPoint: UnitPoint(x: 0.5, y: -3.0616171314629196e-17),endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)).edgesIgnoringSafeArea(.all)
+            
+            VStack() {
+                Image("Group 38").padding(.top,20)
+                Text("Email").font(.system(size:15,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 45, leading: 65, bottom: 0, trailing: 0))
+                TextField("Email address", text: $user).padding(.leading,65)
+                Divider().padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 65))
+                Text("Password").font(.system(size:15,weight:.semibold)).frame(maxWidth:.infinity,alignment:.leading).padding(EdgeInsets(top: 45, leading: 65, bottom: 0, trailing: 0))
+                TextField("Password", text: $pass).padding(.leading,65)
+                Divider().padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 65))
+                Button(action: {
+                    signInSuccess = true
+                }) {
+                    Image("Signup")
+                }.padding(.top,14)
+                
+                Spacer()
+            }
+         
         }
+        
     }
 }
 struct HomeView: View {
