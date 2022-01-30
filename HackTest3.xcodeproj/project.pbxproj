@@ -14,6 +14,8 @@
 		56AACC0B27A6361C00AEB844 /* HackTest3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AACC0A27A6361C00AEB844 /* HackTest3Tests.swift */; };
 		56AACC1527A6361C00AEB844 /* HackTest3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AACC1427A6361C00AEB844 /* HackTest3UITests.swift */; };
 		56AACC1727A6361C00AEB844 /* HackTest3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AACC1627A6361C00AEB844 /* HackTest3UITestsLaunchTests.swift */; };
+		A8408F8927A6C57C0030B125 /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8408F8827A6C57C0030B125 /* Recommendation.swift */; };
+		A8408F8B27A6C6BD0030B125 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8408F8A27A6C6BD0030B125 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		56AACC1027A6361C00AEB844 /* HackTest3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackTest3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56AACC1427A6361C00AEB844 /* HackTest3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackTest3UITests.swift; sourceTree = "<group>"; };
 		56AACC1627A6361C00AEB844 /* HackTest3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackTest3UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A8408F8827A6C57C0030B125 /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		A8408F8A27A6C6BD0030B125 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				56AACBFB27A6361A00AEB844 /* ContentView.swift */,
 				56AACBFD27A6361C00AEB844 /* Assets.xcassets */,
 				56AACBFF27A6361C00AEB844 /* Preview Content */,
+				A8408F8827A6C57C0030B125 /* Recommendation.swift */,
+				A8408F8A27A6C6BD0030B125 /* Place.swift */,
 			);
 			path = HackTest3;
 			sourceTree = "<group>";
@@ -257,8 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8408F8927A6C57C0030B125 /* Recommendation.swift in Sources */,
 				56AACBFC27A6361A00AEB844 /* ContentView.swift in Sources */,
 				56AACBFA27A6361A00AEB844 /* HackTest3App.swift in Sources */,
+				A8408F8B27A6C6BD0030B125 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
